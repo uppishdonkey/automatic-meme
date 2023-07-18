@@ -1,5 +1,5 @@
 var apiKey = '7ab439372a6b7834b1058543aced3bee';
-var searchBtnEl = document.querySelector('#searchBtn');
+var searchBtnEl = document.querySelector('#searchButton');
 var searchInput = document.querySelector('input');
 var citySearch = [];
 
@@ -14,7 +14,7 @@ function handleSearch () {
 }
 
 function fetchWeather (city) {
-    var apiUrlWeather = 'https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial';
+    var apiUrlWeather = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial`;
     fetch(apiUrlWeather).then(response => response.json()).then(data => {
         console.log(data);
         displayWeather(data);
@@ -23,7 +23,7 @@ function fetchWeather (city) {
 }
 
 function fetchForecast (data) {
-    var apiUrlForecast = 'https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${apiKey}';
+    var apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&units=imperial&appid=${apiKey}`;
     fetch(apiUrlForecast).then(response => response.json()).then(data => {
         console.log(data)
         displayForecast(data.list)
@@ -34,7 +34,7 @@ function displayWeather (data) {
     var changeDate = dayjs.unix(data.dt).format('MMM D, YYYY');
     document.getElementById('city').textContent = data.name;
     document.getElementById('date').textContent = changeDate;
-    document.getElementById('icon').src ='https://openweathermap.org/img/w/${data.weather[0].icon}.png';
+    document.getElementById('icon').src =`https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
     document.getElementById('temp').textContent = data.main.temp + ' F'
     document.getElementById('humid').textContent = data.main.humidity + ' %'
     document.getElementById('wind').textContent = data.wind.speed + ' mph'
