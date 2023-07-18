@@ -5,3 +5,6 @@ The user is given a weather dashboard with form inputs. When the user searches f
 
 ## Screenshot of Deployed Application
 ![screenshot](<Screenshot 2023-07-17 221024.png>)
+
+## Link to Deployed Application
+https://uppishdonkey.github.io/automatic-meme/
